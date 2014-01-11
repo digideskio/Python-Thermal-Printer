@@ -46,22 +46,30 @@ def hold():
   GPIO.output(ledPin, GPIO.LOW)
 
 
-# Called at periodic intervals (30 seconds by default).
+# Twitter alled at periodic intervals (30 seconds by default).
 # Invokes twitter script.
-def interval():
+def intervalTwitter():
   GPIO.output(ledPin, GPIO.HIGH)
-  p = subprocess.Popen(["python", "twitter.py", str(lastId)],
-    stdout=subprocess.PIPE)
+  p = subprocess.Popen(["python", "twitter.py", str(lastId)], stdout=subprocess.PIPE)
+
   GPIO.output(ledPin, GPIO.LOW)
   return p.communicate()[0] # Script pipes back lastId, returned to main
 
+def intervalOther():
+
+  GPIO.output(ledPin, GPIO.HIGH)
+  p = subprocess.Popen(["python", "twilio.py", ""], stdout=subprocess.PIPE)
+  
+  GPIO.output(ledPin, GPIO.LOW)
+
+  return p.communicate()[0]
 
 # Called once per day (6:30am by default).
 # Invokes weather forecast and sudoku-gfx scripts.
 def daily():
   GPIO.output(ledPin, GPIO.HIGH)
-  subprocess.call(["python", "forecast.py"])
-  subprocess.call(["python", "sudoku-gfx.py"])
+#WAW subprocess.call(["python", "forecast.py"])
+#WAW subprocess.call(["python", "sudoku-gfx.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
 
@@ -160,7 +168,7 @@ while(True):
   # import thing.
   if t > nextInterval:
     nextInterval = t + 30.0
-    result = interval()
+    result = intervalTwitter()
     if result is not None:
       lastId = result.rstrip('\r\n')
 
