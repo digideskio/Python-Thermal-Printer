@@ -42,7 +42,7 @@ consumer_secret = 'PUT_YOUR_CONSUMER_SECRET_HERE'
 # boolean operators.  See http://dev.twitter.com/docs/using-search
 # for options and syntax.  Funny characters do NOT need to be URL
 # encoded here -- urllib takes care of that.
-queryString = 'from:Adafruit'
+queryString = 'from:WadeWegner'
 
 
 # Other globals.  You probably won't need to change these. -----------------
