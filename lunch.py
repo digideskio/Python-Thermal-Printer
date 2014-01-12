@@ -17,8 +17,15 @@ day = next(itertools.dropwhile(lambda day: day['date'] != '2014-01-13', days), N
 
 if day:
 
+    printer.inverseOn()
+    printer.print('{:^32}'.format("Lunch menu for " + today))
+    printer.inverseOff()
+
     menu_items = '\n'.join(item['food']['name'] for item in day['menu_items'])
     printer.print(menu_items)
+
+    printer.feed(3)
+
     print(menu_items)
 
 else:
