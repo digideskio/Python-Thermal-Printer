@@ -7,8 +7,9 @@ import urllib2
 import time
 
 today = time.strftime("%Y-%m-%d")
+printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
-printer.print(today)
+printer.printlf(today)
 
 text = urllib2.urlopen('http://dcsd.nutrislice.com/menu/meadow-view/lunch/').read()
 menus = json.loads(re.search(r"bootstrapData\['menuMonthWeeks'\]\s*=\s*(.*);", text).group(1))
