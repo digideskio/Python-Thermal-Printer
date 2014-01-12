@@ -164,6 +164,7 @@ while(True):
   else:
     dailyFlag = False  # Reset daily trigger
 
+  # WAW: Not interested in having Twitter running 
   # Every 30 seconds, run Twitter scripts.  'lastId' is passed around
   # to preserve state between invocations.  Probably simpler to do an
   # import thing.
