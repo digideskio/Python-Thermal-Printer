@@ -13,7 +13,7 @@ today = time.strftime("%Y-%m-%d")
 text = urllib2.urlopen('http://dcsd.nutrislice.com/menu/meadow-view/lunch/').read()
 menus = json.loads(re.search(r"bootstrapData\['menuMonthWeeks'\]\s*=\s*(.*);", text).group(1))
 days = itertools.chain.from_iterable(menu['days'] for menu in menus)
-day = next(itertools.dropwhile(lambda day: day['date'] != '2014-01-13', days), None)
+day = next(itertools.dropwhile(lambda day: day['date'] != today, days), None)
 
 if day:
 
