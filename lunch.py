@@ -1,15 +1,21 @@
-#from __future__ import print_function
+from __future__ import print_function
 from Adafruit_Thermal import *
+from xml.dom.minidom import parseString
 import itertools
 import json
 import re
 import urllib2
 import time
 
-today = time.strftime("%Y-%m-%d")
+
+
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
-printer.printlf(today)
+printer.print("testing 123")
+
+today = time.strftime("%Y-%m-%d")
+
+#printer.printlf(today)
 
 text = urllib2.urlopen('http://dcsd.nutrislice.com/menu/meadow-view/lunch/').read()
 menus = json.loads(re.search(r"bootstrapData\['menuMonthWeeks'\]\s*=\s*(.*);", text).group(1))
