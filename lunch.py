@@ -25,6 +25,9 @@ days = itertools.chain.from_iterable(menu['days'] for menu in menus)
 day = next(itertools.dropwhile(lambda day: day['date'] != '2014-01-13', days), None)
 
 if day:
-    print('\n'.join(item['food']['name'] for item in day['menu_items']))
+
+	menu_items = '\n'.join(item['food']['name'] for item in day['menu_items'])
+	printer.print(menu_items)
+    print(menu_items)
 else:
     print('Day not found.')
