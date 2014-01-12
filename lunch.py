@@ -14,11 +14,18 @@ try:
 	days = itertools.chain.from_iterable(menu['days'] for menu in menus)
 	day = next(itertools.dropwhile(lambda day: day['date'] != '2014-01-13', days), 1)
 
+	printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
+
 	printer.inverseOn()
 	printer.printlf('{:^32}'.format("Lunch for " + today))
 	printer.inverseOff()
 
-	printer.printlf('\n'.join(item['food']['name'] for item in day['menu_items']))
+	results = '\n'.join(item['food']['name'] for item in day['menu_items'])
+
+	printer.printlf(results)
+
+	print results
+
 
 except:
 
