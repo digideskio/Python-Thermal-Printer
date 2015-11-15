@@ -25,7 +25,6 @@ for message in messages:
 
 	printer.print('Date: ' + pacific.strftime('%x %X'))
 
-		#printer.print('Date: ' + dateutil.parser.parse(message["CreatedDateTime"]).strftime("%B %d, %Y"))
 	printer.feed(1)
 	printer.print('Message:')
 	printer.feed(2)
