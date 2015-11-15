@@ -160,8 +160,8 @@ while(True):
   # to preserve state between invocations.  Probably simpler to do an
   # import thing.
 
-  if t > nextInterval:
-    nextInterval = t + 30.0
-    result = intervalOther()
-    if result is not None:
-      lastId = result.rstrip('\r\n')
+#  if t > nextInterval:
+    #nextInterval = t + 30.0
+    #result = intervalOther()
+    #if result is not None:
+      #lastId = result.rstrip('\r\n')
