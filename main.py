@@ -46,15 +46,8 @@ def hold():
   GPIO.output(ledPin, GPIO.LOW)
 
 
-# Twitter alled at periodic intervals (30 seconds by default).
-# Invokes twitter script.
-def intervalTwitter():
-  GPIO.output(ledPin, GPIO.HIGH)
-  p = subprocess.Popen(["python", "twitter.py", str(lastId)], stdout=subprocess.PIPE)
-
-  GPIO.output(ledPin, GPIO.LOW)
-  return p.communicate()[0] # Script pipes back lastId, returned to main
-
+# Polled at periodic intervals (30 seconds by default).
+# Invokes script.
 def intervalOther():
 
   GPIO.output(ledPin, GPIO.HIGH)
@@ -69,10 +62,8 @@ def intervalOther():
 def daily():
   GPIO.output(ledPin, GPIO.HIGH)
   subprocess.call(["python", "forecast.py"])
-  # subprocess.call(["python", "sudoku-gfx.py"])
-  # subprocess.call(["python", "lunch.py"])
-  GPIO.output(ledPin, GPIO.LOW)
 
+  GPIO.output(ledPin, GPIO.LOW)
 
 # Initialization
 
@@ -165,15 +156,9 @@ while(True):
   else:
     dailyFlag = False  # Reset daily trigger
 
-  # WAW: Not interested in having Twitter running 
-  # Every 30 seconds, run Twitter scripts.  'lastId' is passed around
+  # Every 30 seconds, run these scripts.  'lastId' is passed around
   # to preserve state between invocations.  Probably simpler to do an
   # import thing.
-  #if t > nextInterval:
-  #  nextInterval = t + 30.0
-  #  result = intervalTwitter()
-  #  if result is not None:
-  #    lastId = result.rstrip('\r\n')
 
   if t > nextInterval:
     nextInterval = t + 30.0
