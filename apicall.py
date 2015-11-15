@@ -12,10 +12,10 @@ messages = json.loads(text)
 for message in messages:
 	printer.print('From: ' + message["FromName"])
 	printer.feed(1)
-	printer.print('Date: ' + message["CreatedDateTime"])
+	printer.print('Date: ' + message["CreatedDateTime"].strftime("%B %d, %Y"))
 	printer.feed(1)
 	printer.print('Message:')
-	printer.feed(1)
+	printer.feed(2)
 	printer.print(message["Text"])
 	printer.feed(3)
 
