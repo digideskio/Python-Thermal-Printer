@@ -12,7 +12,7 @@ messages = json.loads(text)
 for message in messages:
 	printer.print('From: ' + message["FromName"])
 	printer.feed(1)
-	printer.print('Date: ' + dateutil.parser.parse(message["CreatedDateTime"]).strftime("%B %d, %Y"))
+	#printer.print('Date: ' + dateutil.parser.parse(message["CreatedDateTime"]).strftime("%B %d, %Y"))
 	printer.feed(1)
 	printer.print('Message:')
 	printer.feed(2)
