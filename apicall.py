@@ -10,8 +10,8 @@ text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/message').read()
 messages = json.loads(text)
 
 for message in messages:
-	print(message["Text"] + " from " + message["FromEmail"] + ".")
-	
+	print('\\"' + message["Text"] + '\\" from ' + message["FromEmail"] + '.')
+
 
 #printer.print("testing 123")
 
