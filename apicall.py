@@ -7,9 +7,9 @@ printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/message').read()
 
-messages = json.loads(text)
+messages = json.load(text)
 
-for message in messages
+for message in messages:
 	print message
 
 #printer.print("testing 123")
