@@ -1,5 +1,9 @@
 from __future__ import print_function
-import urllib, time, json, urllib2, re, arrow
+import urllib, time, json, urllib2, re
+from datetime import datetime
+from dateutil import tz
+
+import dateutil.parse
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
 
@@ -12,6 +16,14 @@ messages = json.loads(text)
 for message in messages:
 	printer.print('From: ' + message["FromName"])
 	printer.feed(1)
+
+	from_zone = tz.gettz('UTC')
+	to_zone = tz.gettz('US/Pacific')
+	utc = datetime.strptime(message["CreatedDateTime"])
+	utc = utc.replace(tzinfo=from_zone)
+	pacific = utc.astimezone(to_zone)
+
+	printer.print('Date: ' + pacific.strftime('%x %X'))
 
 		#printer.print('Date: ' + dateutil.parser.parse(message["CreatedDateTime"]).strftime("%B %d, %Y"))
 	printer.feed(1)
