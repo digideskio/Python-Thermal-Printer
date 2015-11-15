@@ -32,7 +32,7 @@ printer      = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 # Called when button is briefly tapped.  Invokes time/temperature script.
 def tap():
   GPIO.output(ledPin, GPIO.HIGH)  # LED on while working
-  subprocess.call(["python", "timetemp.py"])
+  #subprocess.call(["python", "timetemp.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
 
@@ -130,8 +130,7 @@ while(True):
       # Yes.  Debounced press or release...
       if buttonState == True:       # Button released?
         if tapEnable == True:       # Ignore if prior hold()
-          #tap()                     # Tap triggered (button released)
-          hold()
+          tap()                     # Tap triggered (button released)
           tapEnable  = False        # Disable tap and hold
           holdEnable = False
       else:                         # Button pressed
