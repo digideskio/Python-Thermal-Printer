@@ -19,10 +19,7 @@ for message in messages:
 	from_zone = tz.gettz('UTC')
 	to_zone = tz.gettz('US/Pacific')
 
-	createdDateTime = str(message["CreatedDateTime"])
-	print(createdDateTime)
-	
-	utc = datetime.strptime(createdDateTime)
+	utc = dateutil.parser.parse(message["CreatedDateTime"])
 	utc = utc.replace(tzinfo=from_zone)
 	pacific = utc.astimezone(to_zone)
 
