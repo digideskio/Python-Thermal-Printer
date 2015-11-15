@@ -1,5 +1,5 @@
 from __future__ import print_function
-import urllib, time, json, requests
+import urllib, time, json
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
 
