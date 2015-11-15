@@ -51,7 +51,7 @@ def hold():
 def intervalOther():
 
   GPIO.output(ledPin, GPIO.HIGH)
-  p = subprocess.Popen(["python", "twilio.py", ""], stdout=subprocess.PIPE)
+  p = subprocess.Popen(["python", "apicall.py", ""], stdout=subprocess.PIPE)
   
   GPIO.output(ledPin, GPIO.LOW)
 
@@ -61,7 +61,7 @@ def intervalOther():
 # Invokes weather forecast and sudoku-gfx scripts.
 def daily():
   GPIO.output(ledPin, GPIO.HIGH)
-  subprocess.call(["python", "forecast.py"])
+  #subprocess.call(["python", "forecast.py"])
 
   GPIO.output(ledPin, GPIO.LOW)
 
