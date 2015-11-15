@@ -2,8 +2,7 @@ from __future__ import print_function
 import urllib, time, json, urllib2, re
 from datetime import datetime
 from dateutil import tz
-
-import dateutil.parse
+import dateutil.parser
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
 
