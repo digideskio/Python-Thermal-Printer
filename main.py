@@ -130,7 +130,8 @@ while(True):
       # Yes.  Debounced press or release...
       if buttonState == True:       # Button released?
         if tapEnable == True:       # Ignore if prior hold()
-          tap()                     # Tap triggered (button released)
+          #tap()                     # Tap triggered (button released)
+          hold()
           tapEnable  = False        # Disable tap and hold
           holdEnable = False
       else:                         # Button pressed
