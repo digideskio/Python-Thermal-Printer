@@ -5,7 +5,7 @@ from xml.dom.minidom import parseString
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
-text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/message').read()
+text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/unread').read()
 
 messages = json.loads(text)
 
