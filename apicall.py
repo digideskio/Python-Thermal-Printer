@@ -13,7 +13,7 @@ text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/unread').read()
 messages = json.loads(text)
 
 for message in messages:
-	printer.print('------------------------------------------')
+	printer.print('--------------------------------')
 	printer.print('From: ' + message["FromName"])
 	printer.feed(1)
 
@@ -30,7 +30,8 @@ for message in messages:
 	printer.print('Message:')
 	printer.feed(2)
 	printer.print(message["Text"])
-	printer.print('------------------------------------------')
+	printer.feed(1)
+	printer.print('--------------------------------')
 	printer.feed(4)
 
 
