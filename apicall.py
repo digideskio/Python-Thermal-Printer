@@ -1,5 +1,5 @@
 from __future__ import print_function
-import urllib, time, json, urllib2, re
+import urllib, time, json, urllib2, re, dateutil.parser
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
 
@@ -12,7 +12,7 @@ messages = json.loads(text)
 for message in messages:
 	printer.print('From: ' + message["FromName"])
 	printer.feed(1)
-	printer.print('Date: ' + message["CreatedDateTime"].strftime("%B %d, %Y"))
+	printer.print('Date: ' + dateutil.parser.parse(message["CreatedDateTime"]).strftime("%B %d, %Y"))
 	printer.feed(1)
 	printer.print('Message:')
 	printer.feed(2)
