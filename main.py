@@ -69,8 +69,8 @@ def intervalOther():
 def daily():
   GPIO.output(ledPin, GPIO.HIGH)
   subprocess.call(["python", "forecast.py"])
-  subprocess.call(["python", "sudoku-gfx.py"])
-  subprocess.call(["python", "lunch.py"])
+  # subprocess.call(["python", "sudoku-gfx.py"])
+  # subprocess.call(["python", "lunch.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
 
@@ -106,8 +106,9 @@ except:
 	exit(0)
 
 # Print greeting image
-printer.printImage(Image.open('gfx/hello.png'), True)
-printer.feed(3)
+#printer.printImage(Image.open('gfx/hello.png'), True)
+#printer.feed(3)
+printer.feed(2)
 GPIO.output(ledPin, GPIO.LOW)
 
 # Poll initial button state and time
@@ -174,3 +175,8 @@ while(True):
   #  if result is not None:
   #    lastId = result.rstrip('\r\n')
 
+  if t > nextInterval:
+    nextInterval = t + 30.0
+    result = intervalOther()
+    if result is not None:
+      lastId = result.rstrip('\r\n')
