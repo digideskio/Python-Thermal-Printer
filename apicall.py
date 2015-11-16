@@ -8,8 +8,6 @@ from xml.dom.minidom import parseString
 import subprocess
 import azureblob
 
-azureblob.upload("latest.jpg")
-
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/unread').read()
@@ -39,8 +37,10 @@ for message in messages:
 	printer.feed(4)
 
 
-	#grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q /home/motion/%m-%d-%y-%H%M.jpg", shell=True) #replace as necessary
-	#grab_cam.wait()
+	grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q latest.jpg", shell=True) #replace as necessary
+	grab_cam.wait()
+
+	azureblob.upload("latest.jpg")
 
 	#print "Acquiring image file...." 
 	#import datetime 
