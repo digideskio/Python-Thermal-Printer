@@ -34,7 +34,7 @@ for message in messages:
 	printer.print(message["Text"])
 	printer.feed(1)
 	printer.print('--------------------------------')
-	printer.feed(4)
+	printer.feed(3)
 
 
 	grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q latest.jpg", shell=True) #replace as necessary
