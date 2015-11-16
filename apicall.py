@@ -16,7 +16,7 @@ height = 1080
 #initialise pygame   
 pygame.init()
 pygame.camera.init()
-cam = pygame.camera.Camera("/dev/video0",(width,height))
+cam = pygame.camera.Camera("/dev/video1",(width,height))
 cam.start()
 
 #setup window
