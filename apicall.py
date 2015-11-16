@@ -53,15 +53,8 @@ for message in messages:
 
 	#take a picture
 	image = cam.get_image()
+	pygame.image.save(image,'/image.jpg')
 	cam.stop()
-
-	#display the picture
-	#catSurfaceObj = image
-	#windowSurfaceObj.blit(catSurfaceObj,(0,0))
-	#pygame.display.update()
-
-	pygame.image.save(windowSurfaceObj,'image.jpg')
-
 
 #printer.print("testing 123")
 
