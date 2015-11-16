@@ -1,7 +1,7 @@
 from azure.storage.blob import BlobService
 import sys
 
-name = str(sys.argv[0])
+name = str(sys.argv[1])
 print(name)
 
 
