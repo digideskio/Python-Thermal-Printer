@@ -7,7 +7,7 @@ def upload(name, imagename):
 
 	blob_service.put_block_blob_from_path(
 	    'printerpics',
-	    imagename,
+	    name,
 	    name,
 	    x_ms_blob_content_type='image/jpeg'
 	)
