@@ -20,7 +20,7 @@ cam = pygame.camera.Camera("/dev/video0",(width,height))
 cam.start()
 
 #setup window
-windowSurfaceObj = pygame.display.set_mode((width,height),1,16)
+#windowSurfaceObj = pygame.display.set_mode((width,height),1,16)
 #pygame.display.set_caption('Camera')
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
@@ -56,9 +56,9 @@ for message in messages:
 	cam.stop()
 
 	#display the picture
-	catSurfaceObj = image
-	windowSurfaceObj.blit(catSurfaceObj,(0,0))
-	pygame.display.update()
+	#catSurfaceObj = image
+	#windowSurfaceObj.blit(catSurfaceObj,(0,0))
+	#pygame.display.update()
 
 	pygame.image.save(windowSurfaceObj,'image.jpg')
 
