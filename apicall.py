@@ -43,16 +43,16 @@ for message in messages:
 	printer.feed(4)
 
 
-	grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q /home/motion/%m-%d-%y-%H%M.jpg", shell=True) #replace as necessary
-	grab_cam.wait()
+	#grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q /home/motion/%m-%d-%y-%H%M.jpg", shell=True) #replace as necessary
+	#grab_cam.wait()
 
 	#print "Acquiring image file...." 
-	import datetime 
-	todays_date = datetime.datetime.today() 
-	image_name = todays_date.strftime('%m-%d-%y-%H%M') 
-	image_path = '/home/motion/' + image_name + '.jpg' 
+	#import datetime 
+	#todays_date = datetime.datetime.today() 
+	#image_name = todays_date.strftime('%m-%d-%y-%H%M') 
+	#image_path = '/home/motion/' + image_name + '.jpg' 
 
-	azureblob.upload(image_path, image_name + '.jpg')
+	#azureblob.upload(image_path, image_name + '.jpg')
 
 
 #printer.print("testing 123")
