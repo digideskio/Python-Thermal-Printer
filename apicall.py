@@ -6,6 +6,7 @@ import dateutil.parser
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
 import subprocess
+import azureblob
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
@@ -44,6 +45,8 @@ for message in messages:
 	todays_date = datetime.datetime.today() 
 	image_name = todays_date.strftime('%m-%d-%y-%H%M') 
 	image_path = '/home/motion/' + image_name + '.jpg' 
+
+	azureblob.upload(image_path, image_name + '.jpg')
 
 
 #printer.print("testing 123")
