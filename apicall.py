@@ -21,7 +21,7 @@ cam.start()
 
 #setup window
 windowSurfaceObj = pygame.display.set_mode((width,height),1,16)
-pygame.display.set_caption('Camera')
+#pygame.display.set_caption('Camera')
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
