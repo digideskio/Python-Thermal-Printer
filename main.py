@@ -156,12 +156,12 @@ while(True):
   else:
     dailyFlag = False  # Reset daily trigger
 
-  # Every 15 seconds, run these scripts.  'lastId' is passed around
+  # Every 5 seconds, run these scripts.  'lastId' is passed around
   # to preserve state between invocations.  Probably simpler to do an
   # import thing.
 
   if t > nextInterval:
-    nextInterval = t + 15.0
+    nextInterval = t + 5.0
     result = intervalOther()
     if result is not None:
       lastId = result.rstrip('\r\n')
