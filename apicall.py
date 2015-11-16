@@ -8,6 +8,12 @@ from xml.dom.minidom import parseString
 import subprocess
 import azureblob
 
+import datetime 
+todays_date = datetime.datetime.today() 
+image_name = todays_date.strftime('%m-%d-%y-%H%M') 
+
+azureblob.upload("image2.jpg", image_name + '.jpg')
+
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 text = urllib2.urlopen('http://rpprinter.azurewebsites.net/api/unread').read()
