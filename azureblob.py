@@ -11,8 +11,8 @@ blob_service.create_container('printerpics', x_ms_blob_public_access='container'
 
 blob_service.put_block_blob_from_path(
     'printerpics',
-    'image.jpg',
-    'image.jpg',
+    name,
+    name,
     x_ms_blob_content_type='image/jpg'
 )
 
