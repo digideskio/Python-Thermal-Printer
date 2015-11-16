@@ -9,6 +9,6 @@ def upload(name, imagename):
 	    'printerpics',
 	    name,
 	    name,
-	    x_ms_blob_content_type='image/jpeg'
+	    x_ms_blob_content_type='image/jpg'
 	)
 
