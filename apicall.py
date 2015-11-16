@@ -55,6 +55,11 @@ for message in messages:
 	image = cam.get_image()
 	cam.stop()
 
+	#display the picture
+	catSurfaceObj = image
+	windowSurfaceObj.blit(catSurfaceObj,(0,0))
+	pygame.display.update()
+
 	pygame.image.save(windowSurfaceObj,'image.jpg')
 
 
