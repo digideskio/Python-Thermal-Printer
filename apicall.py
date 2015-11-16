@@ -1,27 +1,11 @@
 from __future__ import print_function
-import urllib, time, json, urllib2, re, os
-import pygame, sys
+import urllib, time, json, urllib2, re
 from datetime import datetime
 from dateutil import tz
 import dateutil.parser
 from Adafruit_Thermal import *
 from xml.dom.minidom import parseString
-
-from pygame.locals import *
-import pygame.camera
-
-width = 1920
-height = 1080
-
-#initialise pygame   
-pygame.init()
-pygame.camera.init()
-cam = pygame.camera.Camera("/dev/video1",(width,height))
-cam.start()
-
-#setup window
-#windowSurfaceObj = pygame.display.set_mode((width,height),1,16)
-#pygame.display.set_caption('Camera')
+import subprocess
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
@@ -51,10 +35,16 @@ for message in messages:
 	printer.print('--------------------------------')
 	printer.feed(4)
 
-	#take a picture
-	image = cam.get_image()
-	pygame.image.save(image,'/image.jpg')
-	cam.stop()
+
+	grab_cam = subprocess.Popen("sudo fswebcam -r 1920x1080 -d /dev/video0 -q /home/motion/%m-%d-%y-%H%M.jpg", shell=True) #replace as necessary
+	grab_cam.wait()
+
+	#print "Acquiring image file...." 
+	import datetime 
+	todays_date = datetime.datetime.today() 
+	image_name = todays_date.strftime('%m-%d-%y-%H%M') 
+	image_path = '/home/motion/' + image_name + '.jpg' 
+
 
 #printer.print("testing 123")
 
